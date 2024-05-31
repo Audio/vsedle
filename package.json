@@ -1,0 +1,31 @@
+{
+  "name": "karpacz",
+  "version": "1.0.0",
+  "description": "Jedeme do Karpacze",
+  "main": "index.js",
+  "engines": {
+    "node": "^20.6"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "test": "npm run lint && npm run types",
+    "types": "tsc -p tsconfig.json"
+  },
+  "author": "Mafo",
+  "license": "ISC",
+  "dependencies": {
+    "awilix": "^10.0.2",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.12.13",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}
