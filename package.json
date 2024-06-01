@@ -10,6 +10,7 @@
 		"dev": "nodemon .",
 		"build": "vite build -c client/vite.config.js",
 		"lint": "eslint --cache .",
+		"production": "NODE_ENV=production node .",
 		"test": "npm run lint && npm run types",
 		"types": "tsc -p tsconfig.json"
 	},
