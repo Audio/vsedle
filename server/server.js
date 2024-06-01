@@ -55,7 +55,7 @@ module.exports = class Server {
 				next(new Error('Invalid sport.'))
 				return
 			}
-			if (!/^202[34]-\d\d-\d\d$/.test(date)) {
+			if (!/^202\d-\d\d-\d\d$/.test(date)) {
 				next(new Error('Invalid date.'))
 				return
 			}
@@ -88,9 +88,23 @@ module.exports = class Server {
 			res.send(this.activityService.sumActivities(recent, total))
 		})
 
+		this.app.get('/public-api/my-activities', async (req, res, next) => {
+			const { month, user } = req.query
+			if (!(user in this.config.users)) {
+				next(new Error('Invalid user.'))
+				return
+			}
+			if (!/^202\d-\d\d$/.test(month)) {
+				next(new Error('Invalid month.'))
+				return
+			}
+
+			res.send(await this.db.getMyActivities(month, user))
+		})
+
 		this.app.get('/public-api/config', async (req, res) => {
-			const { recentDays, targetDistance } = this.config
-			res.send({ recentDays, targetDistance })
+			const { recentDays, sports, targetDistance, users } = this.config
+			res.send({ recentDays, sports, targetDistance, users })
 		})
 
 		const { port } = this.config.server

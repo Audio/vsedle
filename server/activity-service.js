@@ -6,20 +6,10 @@ module.exports = class ActivityService {
 		this.config = config
 	}
 
-	// TODO
-	// #monthsNames = {
-	// 	12: 'Prosinec',
-	// 	'01': 'Leden',
-	// 	'02': 'Únor',
-	// 	'03': 'Březen',
-	// 	'04': 'Duben',
-	// 	'05': 'Květen',
-	// }
-
 	/**
 	 * @typedef {{
-	 *  user: string
-	 *  sport: string
+	 *  user: keyof import('./config')['users']
+	 *  sport: keyof import('./config')['sports']
 	 *  distance: number
 	 * }} Activity
 	 * @param {Activity[]} recentActivities

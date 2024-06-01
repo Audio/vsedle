@@ -4,11 +4,11 @@ module.exports = {
 	},
 	recentDays: 5,
 	sports: {
+		walking: 'Chůze',
+		running: 'Běh',
 		bicycle: 'Kolo',
 		inline: 'Brusle',
-		running: 'Běh',
 		swimming: 'Plavání',
-		walking: 'Chůze',
 	},
 	server: {
 		port: 3004,

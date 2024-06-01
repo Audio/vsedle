@@ -14,13 +14,12 @@ import sendRequest from '../send-request'
  * @typedef {{
  *  recentDays: number
  *  targetDistance: number
+ *  sports: import('../../server/config')['sports']
+ *  users: import('../../server/config')['users']
  * }} AppConfig
  */
 
 function App() {
-	/** @type {[AppConfig]} */
-	const [appConfig, setAppConfig] = useState({})
-
 	/** @type {[Activity[]]} */
 	const [activities, setActivities] = useState([])
 
@@ -30,6 +29,15 @@ function App() {
 		})
 	}, [setActivities])
 
+	const onActivityUpdate = () => {
+		sendRequest('/public-api/activities').then((activities) => {
+			setActivities(activities)
+		})
+	}
+
+	/** @type {[AppConfig]} */
+	const [appConfig, setAppConfig] = useState({})
+
 	useEffect(() => {
 		sendRequest('/public-api/config').then((config) => {
 			setAppConfig(config)
@@ -38,22 +46,26 @@ function App() {
 
 	return (
 		<div className="container">
-			<div className="row p-3">
-				<MyActivities></MyActivities>
+			<div className="row">
+				<MyActivities
+					onActivityUpdate={onActivityUpdate}
+					sports={appConfig.sports}
+					users={appConfig.users}
+				/>
 			</div>
 
 			<div className="row">
 				<Summary
 					activities={activities}
 					recentDays={appConfig.recentDays}
-				></Summary>
+				/>
 			</div>
 
 			<div className="row my-3">
 				<Progress
 					activities={activities}
 					targetDistance={appConfig.targetDistance}
-				></Progress>
+				/>
 			</div>
 
 			<div className="clearfix">&nbsp;</div>

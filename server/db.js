@@ -42,8 +42,8 @@ module.exports = class Db {
 	/**
 	 * @param {string} [dateFrom]
 	 * @returns {Promise<{
-	 *  user: string
-	 *  sport: string
+	 *  user: keyof import('./config')['users']
+	 *  sport: keyof import('./config')['sports']
 	 *  distance: number
 	 * }[]>}
 	 */
@@ -57,6 +57,30 @@ module.exports = class Db {
 				ORDER BY user, sport ASC
 			`,
 			dateFrom,
+		)
+	}
+
+	/**
+	 * @param {string} month
+	 * @param {string} user
+	 * @returns {Promise<{
+	 *  user: keyof import('./config')['users']
+	 *  sport: keyof import('./config')['sports']
+	 *  distance: number
+	 * }[]>}
+	 */
+	async getMyActivities(month, user) {
+		return this.db.all(
+			`
+				SELECT date, user, sport, distance
+				FROM activities
+				WHERE date LIKE ? || '%'
+					AND user = ?
+				GROUP BY user, sport
+				ORDER BY user, sport ASC
+			`,
+			month,
+			user,
 		)
 	}
 
