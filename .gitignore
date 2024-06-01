@@ -1,3 +1,4 @@
 .eslintcache
+client/dist/
 database.db
 node_modules/

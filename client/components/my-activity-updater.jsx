@@ -23,8 +23,8 @@ const NO_VALUE = ''
  *  date: string
  *  initialValue: number
  *  onActivityUpdate: () => {}
- *  sport: keyof import('../../server/config')['sports']
- *  user: keyof import('../../server/config')['users']
+ *  sport: keyof import('./app').Sports
+ *  user: keyof import('./app').Sports
  * }} props
  */
 function MyActivityUpdater({

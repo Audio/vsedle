@@ -16,6 +16,7 @@ module.exports = class ActivityService {
 	 * @param {Activity[]} totalActivities
 	 */
 	sumActivities(recentActivities, totalActivities) {
+		const recentCountsByUserAndActivity = {}
 		const recentSumsByUser = {}
 		for (const activity of recentActivities) {
 			recentSumsByUser[activity.user] ||= 0
@@ -23,6 +24,12 @@ module.exports = class ActivityService {
 				activity.sport,
 				activity.distance,
 			)
+
+			const userActivities = (recentCountsByUserAndActivity[
+				activity.user
+			] ||= {})
+			userActivities[activity.sport] ||= 0
+			userActivities[activity.sport] += 1
 		}
 
 		const totalSumsByUser = {}
@@ -37,6 +44,7 @@ module.exports = class ActivityService {
 		return Object.entries(this.config.users).map(([user, name]) => {
 			return {
 				name,
+				recentActivities: recentCountsByUserAndActivity[user],
 				recentDistance: recentSumsByUser[user] || 0,
 				totalDistance: totalSumsByUser[user] || 0,
 			}

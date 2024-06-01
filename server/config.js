@@ -1,8 +1,8 @@
-module.exports = {
+module.exports = /** @type {const} */ ({
 	database: {
 		filename: 'database.db',
 	},
-	recentDays: 5,
+	recentDays: 7,
 	sports: {
 		walking: 'Chůze',
 		running: 'Běh',
@@ -22,4 +22,4 @@ module.exports = {
 		peta: 'Péťa',
 		sasa: 'Saša',
 	},
-}
+})

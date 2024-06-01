@@ -5,8 +5,12 @@ import Summary from './summary'
 import sendRequest from '../send-request'
 
 /**
+ * @typedef {import('../../server/config')['sports']} Sports
+ * @typedef {import('../../server/config')['users']} Users
+ *
  * @typedef {{
  *  name: string
+ *  recentActivities: Record<keyof Sports, number>
  *  recentDistance: number
  *  totalDistance: number
  * }} Activity
@@ -14,8 +18,8 @@ import sendRequest from '../send-request'
  * @typedef {{
  *  recentDays: number
  *  targetDistance: number
- *  sports: import('../../server/config')['sports']
- *  users: import('../../server/config')['users']
+ *  sports: Sports
+ *  users: Users
  * }} AppConfig
  */
 

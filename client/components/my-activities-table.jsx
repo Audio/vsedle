@@ -6,16 +6,15 @@ import './my-activities-table.css'
 /**
  * @typedef {{
  *  date: string
- *  sport: keyof import('../../server/config')['sports']
- *  user: keyof import('../../server/config')['users']
+ *  sport: keyof import('./app').Sports
+ *  user: keyof import('./app').Users
  *  distance: number
  * }} Activity
  *
- * @typedef {keyof import('../../server/config')['sports']} Sport
  * @typedef {{
  *  date: string
  *  day: number
- *  distanceBySport: Record<Sport, number>
+ *  distanceBySport: Record<keyof import('./app').Sports, number>
  * }} Day
  */
 
@@ -37,7 +36,7 @@ const getDaysInMonth = (month, year) => {
  * @param {{
  *  month?: string
  *  onActivityUpdate: () => {}
- *  sports: import('../../server/config')['sports']
+ *  sports: import('./app').Sports
  *  user?: string
  * }} param0
  */

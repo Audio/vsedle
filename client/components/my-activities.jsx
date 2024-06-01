@@ -11,8 +11,8 @@ const months = {
 /**
  * @param {{
  *  onActivityUpdate: () => {}
- *  sports: import('../../server/config')['sports']
- *  users: import('../../server/config')['users']
+ *  sports: import('./app').Sports
+ *  users: keyof import('./app').Users
  * }} props
  */
 function MyActivities({ onActivityUpdate, sports = {}, users = {} }) {

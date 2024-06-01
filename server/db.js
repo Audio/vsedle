@@ -50,10 +50,9 @@ module.exports = class Db {
 	async getActivities(dateFrom) {
 		return this.db.all(
 			`
-				SELECT user, sport, SUM(distance) AS distance
+				SELECT user, sport, distance
 				FROM activities
 				${dateFrom ? 'WHERE date >= ?' : ''}
-				GROUP BY user, sport
 				ORDER BY user, sport ASC
 			`,
 			dateFrom,
@@ -76,7 +75,6 @@ module.exports = class Db {
 				FROM activities
 				WHERE date LIKE ? || '%'
 					AND user = ?
-				GROUP BY user, sport
 				ORDER BY user, sport ASC
 			`,
 			month,
