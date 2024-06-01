@@ -25,11 +25,13 @@ module.exports = class ActivityService {
 				activity.distance,
 			)
 
-			const userActivities = (recentCountsByUserAndActivity[
-				activity.user
-			] ||= {})
-			userActivities[activity.sport] ||= 0
-			userActivities[activity.sport] += 1
+			if (activity.distance > 0) {
+				const userActivities = (recentCountsByUserAndActivity[
+					activity.user
+				] ||= {})
+				userActivities[activity.sport] ||= 0
+				userActivities[activity.sport] += 1
+			}
 		}
 
 		const totalSumsByUser = {}
