@@ -56,7 +56,7 @@ function MyActivityUpdater({
 					setValue(Number.isNaN(value) ? NO_VALUE : value)
 				}}
 				onBlur={() => {
-					if (value === NO_VALUE) setValue(initialValue)
+					if (value === NO_VALUE) setValue(storedValue)
 				}}
 			/>
 			<div className={'m-2 ' + (showButtons ? 'd-block' : 'd-none')}>
@@ -72,7 +72,7 @@ function MyActivityUpdater({
 				</button>
 				<button
 					className="btn btn-danger m-1"
-					onClick={() => setValue(initialValue)}
+					onClick={() => setValue(storedValue)}
 				>
 					Zahodit
 				</button>
