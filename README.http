@@ -1,0 +1,19 @@
+POST http://localhost:3004/api/prepare?token=JduNaSnezku
+Content-Type: application/json
+
+###
+
+GET http://localhost:3004/public-api/activities
+Content-Type: application/json
+
+###
+
+POST http://localhost:3004/public-api/activity
+Content-Type: application/json
+
+{
+	"date": "2024-05-31",
+	"user": "peta",
+	"sport": "walking",
+	"distance": 5.2
+}
