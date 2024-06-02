@@ -14,8 +14,8 @@ function Progress({ activities, targetDistance }) {
 				{activities.map((activity) => {
 					return (
 						<div className="row" key={activity.name}>
-							<div className="col-4">{activity.name}</div>
-							<div className="col-2">
+							<div className="col-3">{activity.name}</div>
+							<div className="col-3">
 								<Km distance={activity.totalDistance} />
 							</div>
 							<div className="col-6">
