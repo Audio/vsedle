@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import DistanceAdjustments from './distance-adjustments'
 import MyActivities from './my-activities'
 import Progress from './progress'
 import Summary from './summary'
@@ -19,6 +20,7 @@ import sendRequest from '../send-request'
  *  recentDays: number
  *  targetDistance: number
  *  sports: Sports
+ *  sportsWalkingRate: Record<keyof Sports, number>
  *  users: Users
  * }} AppConfig
  */
@@ -69,6 +71,13 @@ function App() {
 				<Progress
 					activities={activities}
 					targetDistance={appConfig.targetDistance}
+				/>
+			</div>
+
+			<div className="row my-4">
+				<DistanceAdjustments
+					sports={appConfig.sports}
+					sportsWalkingRate={appConfig.sportsWalkingRate}
 				/>
 			</div>
 

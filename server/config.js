@@ -3,6 +3,9 @@ module.exports = /** @type {const} */ ({
 		filename: 'database.db',
 	},
 	recentDays: 7,
+	server: {
+		port: 3004,
+	},
 	sports: {
 		walking: 'Chůze',
 		running: 'Běh',
@@ -10,8 +13,12 @@ module.exports = /** @type {const} */ ({
 		inline: 'Brusle',
 		swimming: 'Plavání',
 	},
-	server: {
-		port: 3004,
+	sportsWalkingRate: {
+		walking: 1,
+		running: 1,
+		bicycle: 0.5,
+		inline: 0.5,
+		swimming: 2,
 	},
 	targetDistance: 150,
 	users: {

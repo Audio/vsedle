@@ -103,8 +103,21 @@ module.exports = class Server {
 		})
 
 		this.app.get('/public-api/config', async (req, res) => {
-			const { recentDays, sports, targetDistance, users } = this.config
-			res.send({ recentDays, sports, targetDistance, users })
+			const {
+				recentDays,
+				sports,
+				sportsWalkingRate,
+				targetDistance,
+				users,
+			} = this.config
+
+			res.send({
+				recentDays,
+				sports,
+				sportsWalkingRate,
+				targetDistance,
+				users,
+			})
 		})
 
 		const { port } = this.config.server
