@@ -24,17 +24,17 @@ const getIcon = (sport) => {
 function Summary({ activities, recentDays }) {
 	return (
 		<>
-			<div className="fs-2 my-3">Nedávné aktivity</div>
+			<div className="fs-2 my-3">Posledních {recentDays} dní</div>
 			<table className="table table-striped">
 				<thead>
 					<tr className="table-dark">
-						<th scope="col" className="col-4">
+						<th scope="col" className="col-3">
 							&nbsp;
 						</th>
-						<th scope="col" className="col-4">
-							Posledních {recentDays} dní
+						<th scope="col" className="col-3">
+							Vzdálenost
 						</th>
-						<th scope="col" className="col-4">
+						<th scope="col" className="col-6">
 							Aktivity
 						</th>
 					</tr>
@@ -53,7 +53,7 @@ function Summary({ activities, recentDays }) {
 									).map(([sport, count]) => {
 										return (
 											<span
-												className="sport-icon"
+												className="sport-icon text-nowrap"
 												key={activity.name + sport}
 											>
 												<span className="badge rounded-pill bg-secondary">
