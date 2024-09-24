@@ -24,7 +24,6 @@ module.exports = /** @type {const} */ ({
 	users: {
 		dominik: 'Domča',
 		gergi: 'Gergi',
-		luky: 'Luky',
 		martin: 'Martin',
 		peta: 'Péťa',
 		sasa: 'Saša',
