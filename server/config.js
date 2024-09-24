@@ -10,17 +10,15 @@ module.exports = /** @type {const} */ ({
 		walking: 'Chůze',
 		running: 'Běh',
 		bicycle: 'Kolo',
-		inline: 'Brusle',
-		swimming: 'Plavání',
+		fitness: 'Fitko',
 	},
 	sportsWalkingRate: {
-		walking: 1,
-		running: 1,
-		bicycle: 0.5,
-		inline: 0.5,
-		swimming: 2,
+		walking: 2,
+		running: 2,
+		bicycle: 1,
+		fitness: 5, // not really
 	},
-	targetDistance: 150,
+	targetDistance: 300,
 	users: {
 		dominik: 'Domča',
 		gergi: 'Gergi',

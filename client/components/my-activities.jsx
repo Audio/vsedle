@@ -3,9 +3,9 @@ import MyActivitiesTable from './my-activities-table'
 import './my-activities.css'
 
 const months = {
-	'2024-06': 'Červen',
-	'2024-07': 'Červenec',
-	'2024-08': 'Srpen',
+	'2024-10': 'Říjen',
+	'2024-11': 'Listopad',
+	'2024-12': 'Prosinec',
 }
 
 /**

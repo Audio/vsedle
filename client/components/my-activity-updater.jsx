@@ -45,6 +45,8 @@ function MyActivityUpdater({
 	const showButtons =
 		value !== storedValue && !Number.isNaN(value) && value !== NO_VALUE
 
+	const tooltip = sport === 'fitness' ? 'Zadej minuty tréninku.' : 'Zadej skutečné kilometry.'
+
 	return (
 		<>
 			<input
@@ -59,6 +61,9 @@ function MyActivityUpdater({
 					if (value === NO_VALUE) setValue(storedValue)
 				}}
 			/>
+			<div className={'m-2 ' + (showButtons ? 'd-block' : 'd-none')}>
+				{tooltip}
+			</div>
 			<div className={'m-2 ' + (showButtons ? 'd-block' : 'd-none')}>
 				<button
 					className="btn btn-success m-1"

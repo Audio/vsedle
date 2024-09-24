@@ -29,11 +29,12 @@ function DistanceAdjustments({ sports = {}, sportsWalkingRate = {} }) {
 				</thead>
 				<tbody>
 					{Object.entries(sportsWalkingRate).map(([sport, rate]) => {
+						const base = sport === 'fitness' ? '30 minut' : <Km distance={1} />
 						return (
 							<tr key={sport}>
 								<td scope="row">{sports[sport]}</td>
 								<td scope="row">
-									<Km distance={1} />
+									{base}
 								</td>
 								<td scope="row">
 									<Km distance={rate} />

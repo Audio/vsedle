@@ -58,12 +58,14 @@ module.exports = class ActivityService {
 	 * @param {number} distance
 	 */
 	#getFairDistance(sport, distance) {
-		if (sport === 'bicycle' || sport === 'inline') {
-			return distance / 2
+		if (sport === 'walking' || sport === 'running') {
+			return distance * 2
 		}
 
-		if (sport === 'swimming') {
-			return distance * 2
+		if (sport === 'fitness') {
+			// distance is stored in minutes
+			// 30 minutes = 5 km, thus 1 minute = 5/30 km
+			return distance * (5 / 30)
 		}
 
 		return distance
