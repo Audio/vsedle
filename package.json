@@ -1,7 +1,7 @@
 {
-	"name": "karpacz",
+	"name": "vsedle",
 	"version": "1.0.0",
-	"description": "Jedeme do Karpacze",
+	"description": "Jedeme na rotopedech co nejdál.",
 	"main": "index.js",
 	"engines": {
 		"node": "^20.6"
