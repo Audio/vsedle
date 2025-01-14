@@ -1,43 +1,39 @@
 import React from 'react'
-import Km from './km'
+import Steps from './steps'
 
 /**
  * @param {{
  *  sports: import('./app').AppConfig['sports']
- *  sportsWalkingRate: import('./app').AppConfig['sportsWalkingRate']
+ *  sportsStepsRate: import('./app').AppConfig['sportsStepsRate']
  * }} props
  */
-function DistanceAdjustments({ sports = {}, sportsWalkingRate = {} }) {
+function DistanceAdjustments({ sports = {}, sportsStepsRate = {} }) {
 	return (
 		<>
-			<div className="fs-2 my-2">Nastavení aktivit</div>
-			<p>Aktivity se zadávají v kilometrech podle skutečnosti.</p>
-			<p>
-				V přehledových tabulkách se však zobrazuje virtuální počet
-				kilometrů, který zohledňuje náročnost aktivit.
-			</p>
-			<p>Tabulka přepočtů:</p>
+			<div className="fs-2 my-2">Tabulka přepočtů</div>
 			<table className="table table-striped">
 				<thead>
 					<tr className="text-light bg-primary">
 						<th scope="col">Sport</th>
-						<th scope="col">Reálný počet kilometrů</th>
-						<th scope="col">
-							Virtuální počet kilometrů v tabulkách
-						</th>
+						<th scope="col">Zadaná hodnota</th>
+						<th scope="col">Počet kroků v tabulkách</th>
 					</tr>
 				</thead>
 				<tbody>
-					{Object.entries(sportsWalkingRate).map(([sport, rate]) => {
-						const base = sport === 'fitness' ? '30 minut' : <Km distance={1} />
+					{Object.entries(sportsStepsRate).map(([sport, rate]) => {
+						const base =
+							sport === 'sober' ? (
+								<input type="checkbox" checked readOnly />
+							) : (
+								<Steps count={1} />
+							)
+
 						return (
 							<tr key={sport}>
 								<td scope="row">{sports[sport]}</td>
+								<td scope="row">{base}</td>
 								<td scope="row">
-									{base}
-								</td>
-								<td scope="row">
-									<Km distance={rate} />
+									<Steps count={rate} />
 								</td>
 							</tr>
 						)

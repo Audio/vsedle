@@ -45,13 +45,16 @@ function MyActivityUpdater({
 	const showButtons =
 		value !== storedValue && !Number.isNaN(value) && value !== NO_VALUE
 
-	const tooltip =
-		sport === 'fitness'
-			? 'Zadej minuty tréninku.'
-			: 'Zadej skutečné kilometry.'
-
-	return (
-		<>
+	const input =
+		sport === 'sober' ? (
+			<input
+				type="checkbox"
+				checked={value === 1}
+				onChange={(e) => {
+					setValue(e.target.checked === true ? 1 : 0)
+				}}
+			/>
+		) : (
 			<input
 				type="number"
 				value={value}
@@ -64,9 +67,11 @@ function MyActivityUpdater({
 					if (value === NO_VALUE) setValue(storedValue)
 				}}
 			/>
-			<div className={'m-2 ' + (showButtons ? 'd-block' : 'd-none')}>
-				{tooltip}
-			</div>
+		)
+
+	return (
+		<>
+			{input}
 			<div className={'m-2 ' + (showButtons ? 'd-block' : 'd-none')}>
 				<button
 					className="btn btn-success m-1"

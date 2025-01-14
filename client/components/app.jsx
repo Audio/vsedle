@@ -20,7 +20,7 @@ import sendRequest from '../send-request'
  *  recentDays: number
  *  targetDistance: number
  *  sports: Sports
- *  sportsWalkingRate: Record<keyof Sports, number>
+ *  sportsStepsRate: Record<keyof Sports, number>
  *  users: Users
  * }} AppConfig
  */
@@ -77,7 +77,7 @@ function App() {
 			<div className="row my-4">
 				<DistanceAdjustments
 					sports={appConfig.sports}
-					sportsWalkingRate={appConfig.sportsWalkingRate}
+					sportsStepsRate={appConfig.sportsStepsRate}
 				/>
 			</div>
 

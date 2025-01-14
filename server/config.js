@@ -7,18 +7,14 @@ module.exports = /** @type {const} */ ({
 		port: 3004,
 	},
 	sports: {
-		walking: 'Chůze',
-		running: 'Běh',
-		bicycle: 'Kolo',
-		fitness: 'Fitko',
+		walking: 'Kroky',
+		sober: 'Suchej únor',
 	},
-	sportsWalkingRate: {
-		walking: 2,
-		running: 2,
-		bicycle: 1,
-		fitness: 5, // not really
+	sportsStepsRate: {
+		walking: 1,
+		sober: 2000,
 	},
-	targetDistance: 300,
+	targetDistance: 250000,
 	users: {
 		dominik: 'Domča',
 		gergi: 'Gergi',

@@ -1,8 +1,6 @@
-import Km from './km'
+import Steps from './steps'
 import React from 'react'
-import iconBicycle from '../assets/bicycle.png'
-import iconFitness from '../assets/fitness.png'
-import iconRunning from '../assets/running.png'
+import iconSober from '../assets/sober.png'
 import iconWalking from '../assets/walking.png'
 import './summary.css'
 
@@ -10,9 +8,7 @@ import './summary.css'
  * @param {keyof import('./app').Sports} sport
  */
 const getIcon = (sport) => {
-	if (sport === 'bicycle') return iconBicycle
-	if (sport === 'fitness') return iconFitness
-	if (sport === 'running') return iconRunning
+	if (sport === 'sober') return iconSober
 	if (sport === 'walking') return iconWalking
 }
 
@@ -42,7 +38,7 @@ function Summary({ activities, recentDays }) {
 						<tr key={activity.name}>
 							<td scope="row">{activity.name}</td>
 							<td scope="row">
-								<Km distance={activity.recentDistance} />
+								<Steps distance={activity.recentDistance} />
 							</td>
 							<td scope="row">
 								{activity.recentActivities &&

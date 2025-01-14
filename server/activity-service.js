@@ -58,16 +58,10 @@ module.exports = class ActivityService {
 	 * @param {number} distance
 	 */
 	#getFairDistance(sport, distance) {
-		if (sport === 'walking' || sport === 'running') {
-			return distance * 2
-		}
+		// Note: 'sober' sport calculation
+		// distance 1 represents boolean true
+		// distance 0 represents boolean false
 
-		if (sport === 'fitness') {
-			// distance is stored in minutes
-			// 30 minutes = 5 km, thus 1 minute = 5/30 km
-			return distance * (5 / 30)
-		}
-
-		return distance
+		return distance * this.config.sportsStepsRate[sport]
 	}
 }

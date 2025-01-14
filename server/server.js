@@ -62,7 +62,7 @@ module.exports = class Server {
 			if (
 				typeof distance !== 'number' ||
 				distance < 0 ||
-				distance > 1000
+				distance > 100000
 			) {
 				next(new Error('Invalid distance.'))
 				return
@@ -106,7 +106,7 @@ module.exports = class Server {
 			const {
 				recentDays,
 				sports,
-				sportsWalkingRate,
+				sportsStepsRate,
 				targetDistance,
 				users,
 			} = this.config
@@ -114,7 +114,7 @@ module.exports = class Server {
 			res.send({
 				recentDays,
 				sports,
-				sportsWalkingRate,
+				sportsStepsRate,
 				targetDistance,
 				users,
 			})
