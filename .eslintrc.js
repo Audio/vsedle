@@ -3,5 +3,5 @@ module.exports = {
 		node: true,
 		es2023: true,
 	},
-	extends: ['eslint:recommended', 'prettier'],
+	extends: ['eslint:recommended', 'plugin:prettier/recommended'],
 }

@@ -45,7 +45,10 @@ function MyActivityUpdater({
 	const showButtons =
 		value !== storedValue && !Number.isNaN(value) && value !== NO_VALUE
 
-	const tooltip = sport === 'fitness' ? 'Zadej minuty tréninku.' : 'Zadej skutečné kilometry.'
+	const tooltip =
+		sport === 'fitness'
+			? 'Zadej minuty tréninku.'
+			: 'Zadej skutečné kilometry.'
 
 	return (
 		<>
