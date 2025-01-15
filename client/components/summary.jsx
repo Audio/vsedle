@@ -26,7 +26,7 @@ function Summary({ activities, recentDays }) {
 							&nbsp;
 						</th>
 						<th scope="col" className="col-3">
-							Vzdálenost
+							Kroky
 						</th>
 						<th scope="col" className="col-6">
 							Aktivity
@@ -38,7 +38,7 @@ function Summary({ activities, recentDays }) {
 						<tr key={activity.name}>
 							<td scope="row">{activity.name}</td>
 							<td scope="row">
-								<Steps distance={activity.recentDistance} />
+								<Steps count={activity.recentDistance} />
 							</td>
 							<td scope="row">
 								{activity.recentActivities &&
