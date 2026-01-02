@@ -20,7 +20,7 @@ module.exports = class ActivityService {
 		const recentSumsByUser = {}
 		for (const activity of recentActivities) {
 			recentSumsByUser[activity.user] ||= 0
-			recentSumsByUser[activity.user] += this.#getFairDistance(
+			recentSumsByUser[activity.user] += this.#getVirtualDistance(
 				activity.sport,
 				activity.distance,
 			)
@@ -37,7 +37,7 @@ module.exports = class ActivityService {
 		const totalSumsByUser = {}
 		for (const activity of totalActivities) {
 			totalSumsByUser[activity.user] ||= 0
-			totalSumsByUser[activity.user] += this.#getFairDistance(
+			totalSumsByUser[activity.user] += this.#getVirtualDistance(
 				activity.sport,
 				activity.distance,
 			)
@@ -57,11 +57,7 @@ module.exports = class ActivityService {
 	 * @param {keyof typeof import('./config')['sports']} sport
 	 * @param {number} distance
 	 */
-	#getFairDistance(sport, distance) {
-		// Note: 'sober' sport calculation
-		// distance 1 represents boolean true
-		// distance 0 represents boolean false
-
-		return distance * this.config.sportsStepsRate[sport]
+	#getVirtualDistance(sport, distance) {
+		return distance * this.config.sports[sport].distance
 	}
 }

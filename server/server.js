@@ -62,7 +62,7 @@ module.exports = class Server {
 			if (
 				typeof distance !== 'number' ||
 				distance < 0 ||
-				distance > 100000
+				distance > 1000
 			) {
 				next(new Error('Invalid distance.'))
 				return
@@ -103,21 +103,9 @@ module.exports = class Server {
 		})
 
 		this.app.get('/public-api/config', async (req, res) => {
-			const {
-				recentDays,
-				sports,
-				sportsStepsRate,
-				targetDistance,
-				users,
-			} = this.config
+			const { recentDays, sports, targetDistance, users } = this.config
 
-			res.send({
-				recentDays,
-				sports,
-				sportsStepsRate,
-				targetDistance,
-				users,
-			})
+			res.send({ recentDays, sports, targetDistance, users })
 		})
 
 		const { port } = this.config.server

@@ -24,7 +24,8 @@ const NO_VALUE = ''
  *  initialValue: number
  *  onActivityUpdate: () => {}
  *  sport: keyof import('./app').Sports
- *  user: keyof import('./app').Sports
+ *  sportTooltip: string
+ *  user: keyof import('./app').Users
  * }} props
  */
 function MyActivityUpdater({
@@ -32,6 +33,7 @@ function MyActivityUpdater({
 	initialValue,
 	onActivityUpdate,
 	sport,
+	sportTooltip,
 	user,
 }) {
 	const [storedValue, setStoredValue] = useState(initialValue)
@@ -72,9 +74,12 @@ function MyActivityUpdater({
 	return (
 		<>
 			{input}
-			<div className={'m-2 ' + (showButtons ? 'd-block' : 'd-none')}>
+			<div className={'mt-2 ' + (showButtons ? 'd-block' : 'd-none')}>
+				{sportTooltip}
+			</div>
+			<div className={'mt-2 ' + (showButtons ? 'd-block' : 'd-none')}>
 				<button
-					className="btn btn-success m-1"
+					className="btn btn-success mt-1"
 					onClick={() => {
 						store(user, sport, date, value)
 							.then(() => setStoredValue(value))
@@ -84,7 +89,7 @@ function MyActivityUpdater({
 					Uložit
 				</button>
 				<button
-					className="btn btn-danger m-1"
+					className="btn btn-danger mt-1 ms-1"
 					onClick={() => setValue(storedValue)}
 				>
 					Zahodit

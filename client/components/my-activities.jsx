@@ -3,7 +3,8 @@ import MyActivitiesTable from './my-activities-table'
 import './my-activities.css'
 
 const months = {
-	'2025-02': 'Únor',
+	'2026-01': 'Leden',
+	'2026-02': 'Únor',
 }
 
 /**

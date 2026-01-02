@@ -1,40 +1,53 @@
 import React from 'react'
-import Steps from './steps'
+import Km from './km'
 
 /**
  * @param {{
  *  sports: import('./app').AppConfig['sports']
- *  sportsStepsRate: import('./app').AppConfig['sportsStepsRate']
  * }} props
  */
-function DistanceAdjustments({ sports = {}, sportsStepsRate = {} }) {
+function DistanceAdjustments({ sports = {} }) {
 	return (
 		<>
-			<div className="fs-2 my-2">Tabulka přepočtů</div>
+			<div className="fs-2 my-2">Nastavení aktivit</div>
+			<p>
+				Aktivity se zadávají v kilometrech / minutách dle skutečnosti.
+			</p>
+			<p>
+				V přehledových tabulkách se však zobrazuje virtuální počet
+				kilometrů, který zohledňuje náročnost aktivit.
+			</p>
+			<p>Tabulka přepočtů:</p>
 			<table className="table table-striped">
 				<thead>
 					<tr className="text-light bg-primary">
 						<th scope="col">Sport</th>
-						<th scope="col">Zadaná hodnota</th>
-						<th scope="col">Počet kroků v tabulkách</th>
+						<th scope="col">Reálný počet kilometrů / minut</th>
+						<th scope="col">
+							Virtuální počet kilometrů v tabulkách
+						</th>
 					</tr>
 				</thead>
 				<tbody>
-					{Object.entries(sportsStepsRate).map(([sport, rate]) => {
-						const base =
-							sport === 'sober' ? (
-								<input type="checkbox" checked readOnly />
+					{Object.entries(sports).map(([sportKey, sport]) => {
+						const unitDescription = sport.unitDescription ? (
+							<>{sport.unitDescription}</>
+						) : (
+							<Km distance={1} />
+						)
+
+						const unitDescriptionVirtualKm =
+							sport.unitDescriptionVirtualKm ? (
+								<Km distance={sport.unitDescriptionVirtualKm} />
 							) : (
-								<Steps count={1} />
+								<Km distance={sport.distance} />
 							)
 
 						return (
-							<tr key={sport}>
-								<td scope="row">{sports[sport]}</td>
-								<td scope="row">{base}</td>
-								<td scope="row">
-									<Steps count={rate} />
-								</td>
+							<tr key={sportKey}>
+								<td scope="row">{sport.name}</td>
+								<td scope="row">{unitDescription}</td>
+								<td scope="row">{unitDescriptionVirtualKm}</td>
 							</tr>
 						)
 					})}

@@ -53,9 +53,13 @@ function MyActivitiesTable({ month, onActivityUpdate, sports, user }) {
 				const monthNum = Number(month.split('-')[1])
 				const daysInMonth = getDaysInMonth(monthNum, yearNum)
 
+				// hack for January 2026
+				let firstDay = 1
+				if (month === '2026-01') firstDay = 5
+
 				/** @type {Day[]} */
 				const days = []
-				for (let day = 1; day <= daysInMonth; ++day) {
+				for (let day = firstDay; day <= daysInMonth; ++day) {
 					const date = `${month}-${day.toString().padStart(2, '0')}`
 					const dateActivities = activities.filter(
 						(a) => a.date === date,
@@ -89,34 +93,57 @@ function MyActivitiesTable({ month, onActivityUpdate, sports, user }) {
 					<th scope="col" className="col-2">
 						Den
 					</th>
-					{Object.values(sports).map((name) => {
-						return (
-							<th scope="col" className="col-2" key={name}>
-								{name}
-							</th>
-						)
-					})}
+					{Object.entries(sports)
+						.filter(([sportKey]) => {
+							// hack for January 2026
+							if (sportKey === 'sober' && month === '2026-01') {
+								return false
+							}
+							return true
+						})
+						.map(([, sport]) => {
+							return (
+								<th
+									scope="col"
+									className="col-2"
+									key={sport.name}
+								>
+									{sport.name}
+								</th>
+							)
+						})}
 				</tr>
 			</thead>
 			<tbody>
 				{days.map((day) => (
 					<tr key={day.date}>
 						<td scope="row">{day.day}.</td>
-						{Object.keys(sports).map((sport) => {
-							return (
-								<td scope="row" key={day.date + sport}>
-									<MyActivityUpdater
-										date={day.date}
-										initialValue={
-											day.distanceBySport[sport]
-										}
-										onActivityUpdate={onActivityUpdate}
-										sport={sport}
-										user={user}
-									/>
-								</td>
-							)
-						})}
+						{Object.keys(sports)
+							.filter((sport) => {
+								// hack for January 2026
+								if (sport === 'sober' && month === '2026-01') {
+									return false
+								}
+								return true
+							})
+							.map((sport) => {
+								return (
+									<td scope="row" key={day.date + sport}>
+										<MyActivityUpdater
+											date={day.date}
+											initialValue={
+												day.distanceBySport[sport]
+											}
+											onActivityUpdate={onActivityUpdate}
+											sport={sport}
+											sportTooltip={
+												sports[sport].unitTooltip
+											}
+											user={user}
+										/>
+									</td>
+								)
+							})}
 					</tr>
 				))}
 			</tbody>
