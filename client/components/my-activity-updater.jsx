@@ -79,7 +79,7 @@ function MyActivityUpdater({
 			</div>
 			<div className={'mt-2 ' + (showButtons ? 'd-block' : 'd-none')}>
 				<button
-					className="btn btn-success mt-1"
+					className="btn btn-success mt-1 me-1"
 					onClick={() => {
 						store(user, sport, date, value)
 							.then(() => setStoredValue(value))
@@ -89,7 +89,7 @@ function MyActivityUpdater({
 					Uložit
 				</button>
 				<button
-					className="btn btn-danger mt-1 ms-1"
+					className="btn btn-danger mt-1"
 					onClick={() => setValue(storedValue)}
 				>
 					Zahodit
