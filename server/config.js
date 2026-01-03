@@ -36,7 +36,7 @@ module.exports = /** @type {const} */ ({
 			unitTooltip: 'skutečné kilometry',
 		},
 	},
-	targetDistance: 500,
+	targetDistance: 300,
 	users: {
 		dominik: 'Domča',
 		gergi: 'Gergi',
