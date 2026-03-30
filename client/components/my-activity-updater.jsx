@@ -47,29 +47,20 @@ function MyActivityUpdater({
 	const showButtons =
 		value !== storedValue && !Number.isNaN(value) && value !== NO_VALUE
 
-	const input =
-		sport === 'sober' ? (
-			<input
-				type="checkbox"
-				checked={value === 1}
-				onChange={(e) => {
-					setValue(e.target.checked === true ? 1 : 0)
-				}}
-			/>
-		) : (
-			<input
-				type="number"
-				value={value}
-				min={0}
-				onChange={(e) => {
-					const value = parseFloat(e.target.value.replace(',', '.'))
-					setValue(Number.isNaN(value) ? NO_VALUE : value)
-				}}
-				onBlur={() => {
-					if (value === NO_VALUE) setValue(storedValue)
-				}}
-			/>
-		)
+	const input = (
+		<input
+			type="number"
+			value={value}
+			min={0}
+			onChange={(e) => {
+				const value = parseFloat(e.target.value.replace(',', '.'))
+				setValue(Number.isNaN(value) ? NO_VALUE : value)
+			}}
+			onBlur={() => {
+				if (value === NO_VALUE) setValue(storedValue)
+			}}
+		/>
+	)
 
 	return (
 		<>

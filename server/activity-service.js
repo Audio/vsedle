@@ -20,7 +20,7 @@ module.exports = class ActivityService {
 		const recentSumsByUser = {}
 		for (const activity of recentActivities) {
 			recentSumsByUser[activity.user] ||= 0
-			recentSumsByUser[activity.user] += this.#getVirtualDistance(
+			recentSumsByUser[activity.user] += this.#getVirtualSteps(
 				activity.sport,
 				activity.distance,
 			)
@@ -37,7 +37,7 @@ module.exports = class ActivityService {
 		const totalSumsByUser = {}
 		for (const activity of totalActivities) {
 			totalSumsByUser[activity.user] ||= 0
-			totalSumsByUser[activity.user] += this.#getVirtualDistance(
+			totalSumsByUser[activity.user] += this.#getVirtualSteps(
 				activity.sport,
 				activity.distance,
 			)
@@ -57,7 +57,9 @@ module.exports = class ActivityService {
 	 * @param {keyof typeof import('./config')['sports']} sport
 	 * @param {number} distance
 	 */
-	#getVirtualDistance(sport, distance) {
-		return distance * this.config.sports[sport].distance
+	#getVirtualSteps(sport, distance) {
+		if (sport === 'walking') return distance
+
+		return distance * this.config.sports[sport].stepsPerMinute
 	}
 }

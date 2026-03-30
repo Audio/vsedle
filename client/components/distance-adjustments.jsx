@@ -1,5 +1,5 @@
 import React from 'react'
-import Km from './km'
+import Steps from './steps'
 
 /**
  * @param {{
@@ -7,25 +7,26 @@ import Km from './km'
  * }} props
  */
 function DistanceAdjustments({ sports = {} }) {
+	const baseMinutes = 30
+
 	return (
 		<>
 			<div className="fs-2 my-2">Nastavení aktivit</div>
 			<p>
-				Aktivity se zadávají v kilometrech / minutách dle skutečnosti.
+				Aktivity se zadávají v minutách dle skutečnosti, chůze v
+				krocích.
 			</p>
 			<p>
 				V přehledových tabulkách se však zobrazuje virtuální počet
-				kilometrů, který zohledňuje náročnost aktivit.
+				kroků, který zohledňuje náročnost aktivit.
 			</p>
 			<p>Tabulka přepočtů:</p>
 			<table className="table table-striped">
 				<thead>
 					<tr className="text-light bg-primary">
 						<th scope="col">Sport</th>
-						<th scope="col">Reálný počet kilometrů / minut</th>
-						<th scope="col">
-							Virtuální počet kilometrů v tabulkách
-						</th>
+						<th scope="col">Reálný počet minut</th>
+						<th scope="col">Virtuální počet kroků v tabulkách</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,21 +34,23 @@ function DistanceAdjustments({ sports = {} }) {
 						const unitDescription = sport.unitDescription ? (
 							<>{sport.unitDescription}</>
 						) : (
-							<Km distance={1} />
+							<>{baseMinutes} minut</>
 						)
 
-						const unitDescriptionVirtualKm =
-							sport.unitDescriptionVirtualKm ? (
-								<Km distance={sport.unitDescriptionVirtualKm} />
+						const unitDescriptionSteps =
+							sport.unitDescriptionSteps ? (
+								<Steps count={sport.unitDescriptionSteps} />
 							) : (
-								<Km distance={sport.distance} />
+								<Steps
+									count={sport.stepsPerMinute * baseMinutes}
+								/>
 							)
 
 						return (
 							<tr key={sportKey}>
 								<td scope="row">{sport.name}</td>
 								<td scope="row">{unitDescription}</td>
-								<td scope="row">{unitDescriptionVirtualKm}</td>
+								<td scope="row">{unitDescriptionSteps}</td>
 							</tr>
 						)
 					})}

@@ -1,9 +1,13 @@
-import Km from './km'
+import Steps from './steps'
 import React from 'react'
 import iconBicycle from '../assets/bicycle.png'
 import iconFitness from '../assets/fitness.png'
-import iconSober from '../assets/sober.png'
+import iconGardening from '../assets/gardening.png'
+import iconInline from '../assets/inline.png'
+import iconRotoped from '../assets/rotoped.png'
+import iconRunning from '../assets/running.png'
 import iconSwimming from '../assets/swimming.png'
+import iconTennis from '../assets/tennis.png'
 import iconWalking from '../assets/walking.png'
 import './summary.css'
 
@@ -13,8 +17,12 @@ import './summary.css'
 const getIcon = (sport) => {
 	if (sport === 'bicycle') return iconBicycle
 	if (sport === 'fitness') return iconFitness
-	if (sport === 'sober') return iconSober
+	if (sport === 'gardening') return iconGardening
+	if (sport === 'inline') return iconInline
+	if (sport === 'rotoped') return iconRotoped
+	if (sport === 'running') return iconRunning
 	if (sport === 'swimming') return iconSwimming
+	if (sport === 'tennis') return iconTennis
 	if (sport === 'walking') return iconWalking
 }
 
@@ -44,7 +52,7 @@ function Summary({ activities, recentDays }) {
 						<tr key={activity.name}>
 							<td scope="row">{activity.name}</td>
 							<td scope="row">
-								<Km distance={activity.recentDistance} />
+								<Steps count={activity.recentDistance} />
 							</td>
 							<td scope="row">
 								{activity.recentActivities &&

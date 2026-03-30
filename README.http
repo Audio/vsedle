@@ -15,5 +15,5 @@ Content-Type: application/json
 	"date": "2024-05-31",
 	"user": "peta",
 	"sport": "walking",
-	"distance": 5.2
+	"distance": 5000
 }

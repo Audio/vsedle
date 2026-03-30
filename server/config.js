@@ -1,3 +1,8 @@
+const baseMinutes = 30
+const defaultUnitDescription = `${baseMinutes} minut`
+const defaultUnitTooltip = 'minuty aktivity'
+const targetVirtualSteps = 300_000
+
 module.exports = /** @type {const} */ ({
 	database: {
 		filename: 'database.db',
@@ -8,35 +13,62 @@ module.exports = /** @type {const} */ ({
 	},
 	sports: {
 		walking: {
-			name: 'Chůze / Běh',
-			distance: 1, // 1 real km => 1 virtual km
-			unitTooltip: 'skutečné kilometry',
+			name: 'Chůze',
+			stepsPerMinute: 0,
+			unitDescription: 'jeden den',
+			unitDescriptionSteps: 'skutečné kroky',
+			unitTooltip: 'skutečné kroky',
 		},
-		bicycle: {
-			name: 'Kolo / Běžky',
-			distance: 0.5, // 1 real km => 0.5 virtual km
-			unitTooltip: 'skutečné kilometry',
+		running: {
+			name: 'Běh',
+			stepsPerMinute: 4710 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
+		},
+		tennis: {
+			name: 'Tenis',
+			stepsPerMinute: 4110 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
 		},
 		fitness: {
-			name: 'Fitko / Tenis',
-			distance: 5 / 60, // 60 minutes = 5 virtual km, thus 1 minute = 5/60 virtual km
-			unitDescription: '60 minut',
-			unitDescriptionVirtualKm: 5,
-			unitTooltip: 'minuty tréninku',
+			name: 'Fitko',
+			stepsPerMinute: 3540 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
+		},
+		bicycle: {
+			name: 'Kolo',
+			stepsPerMinute: 4710 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
 		},
 		swimming: {
 			name: 'Plavání',
-			distance: 3, // 1 real km => 3 virtual km
-			unitTooltip: 'skutečné kilometry',
+			stepsPerMinute: 5880 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
 		},
-		sober: {
-			name: 'Suchej únor',
-			distance: 1, // 1 virtual km or 0 virtual km
-			unitDescription: 'splněno',
-			unitTooltip: 'skutečné kilometry',
+		inline: {
+			name: 'Brusle',
+			stepsPerMinute: 4110 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
+		},
+		rotoped: {
+			name: 'Rotoped',
+			stepsPerMinute: 4110 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
+		},
+		gardening: {
+			name: 'Zahradničení',
+			stepsPerMinute: 3630 / baseMinutes,
+			unitDescription: defaultUnitDescription,
+			unitTooltip: defaultUnitTooltip,
 		},
 	},
-	targetDistance: 300,
+	targetDistance: targetVirtualSteps,
 	users: {
 		dominik: 'Domča',
 		gergi: 'Gergi',
