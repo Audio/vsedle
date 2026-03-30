@@ -62,7 +62,7 @@ module.exports = class Server {
 			if (
 				typeof distance !== 'number' ||
 				distance < 0 ||
-				distance > 1000
+				distance > 100_000
 			) {
 				next(new Error('Invalid distance.'))
 				return
