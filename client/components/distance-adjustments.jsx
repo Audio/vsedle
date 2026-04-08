@@ -24,7 +24,7 @@ function DistanceAdjustments({ sports = {} }) {
 			<table className="table table-striped">
 				<thead>
 					<tr className="text-light bg-primary">
-						<th scope="col">Sport</th>
+						<th scope="col">Aktivita</th>
 						<th scope="col">Reálný počet minut</th>
 						<th scope="col">Virtuální počet kroků v tabulkách</th>
 					</tr>
